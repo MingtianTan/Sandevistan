@@ -5,6 +5,8 @@ vision-language-action model and a robot's actuators, reacts in milliseconds on 
 slows the plan's clock when it must ("bullet time") and overrides it when it has to. Nothing here is built; the page
 exists to think the idea through and to show it to people who might want to supervise it as a PhD.
 
+Live page: <https://mingtiantan.github.io/Sandevistan/> (GitHub Pages, served from `main`).
+
 - `index.html`, `styles.css`, `main.js`: the page (open `index.html` locally, or serve the folder).
 - `assets/figures/`: the three drawn figures (`make_figures.py` → SVG → PNG via headless Chrome).
 - `assets/media/`: reflex diagrams from Wikimedia Commons; licences and authors in `CREDITS.md`.
