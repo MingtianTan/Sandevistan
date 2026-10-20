@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261021d">
+  <link rel="stylesheet" href="styles.css?v=20261021e">
 </head>
 <body>
   <header class="nav">
@@ -100,6 +100,26 @@
             <text x="492" y="131" class="lbl-m" text-anchor="middle">100s of ms</text>
             <text x="280" y="316" class="lbl-s" text-anchor="middle">a VLA closes its loop through the cortex path; SPINE adds the spinal one</text>
           </svg>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Two bullet-time clips under the title (streamed from GIPHY, not stored in this repository) -->
+    <section class="reel" aria-label="Bullet time on screen">
+      <div class="wrap reel-inner">
+        <figure class="reel-item" style="--reel-color: var(--grn)">
+          <div class="reel-frame">
+            <video src="https://media.giphy.com/media/ZpmxRuLshtGVy/giphy.mp4" poster="https://media.giphy.com/media/ZpmxRuLshtGVy/giphy_s.gif" muted loop autoplay playsinline preload="auto" aria-label="Neo bends back on a rooftop as bullets pass him in slow motion"></video>
+            <span class="reel-tag">1999 · bullet time</span>
+          </div>
+          <figcaption><b>The Matrix.</b> Time nearly stops and Neo still has room to move. SPINE wants the same for a robot: slow the plan's clock, keep the reflexes fast.<span class="credit">Clip: <i>The Matrix</i> (1999), Warner Bros., via <a href="https://giphy.com/gifs/matrix-the-neo-ZpmxRuLshtGVy">GIPHY</a>.</span></figcaption>
+        </figure>
+        <figure class="reel-item" style="--reel-color: var(--cyan)">
+          <div class="reel-frame">
+            <video src="https://media.giphy.com/media/1yz43vX5y7X5zHVR2y/giphy.mp4" poster="https://media.giphy.com/media/1yz43vX5y7X5zHVR2y/giphy_s.gif" muted loop autoplay playsinline preload="auto" aria-label="A Sandevistan activates and time around its user slows down"></video>
+            <span class="reel-tag">2022 · sandevistan</span>
+          </div>
+          <figcaption><b>Cyberpunk: Edgerunners.</b> The Sandevistan, a spinal implant that speeds its owner up until the rest of the world seems frozen. This project borrows its name.<span class="credit">Clip: <i>Cyberpunk: Edgerunners</i> (2022), Studio Trigger and CD PROJEKT RED for Netflix, official GIF via <a href="https://giphy.com/gifs/Edgerunners-cyberpunk-edgerunners-activating-sandevistan-slows-time-down-1yz43vX5y7X5zHVR2y">GIPHY</a>.</span></figcaption>
         </figure>
       </div>
     </section>
@@ -407,7 +427,7 @@
       <div class="wrap">
         <h2>Status and intent</h2>
         <p>This is a research vision, not a result. Nothing described in Parts 2–4 has been built; the data pipeline, the disturbance models, the specialists and the fully verified dataset that Step 2 relies on exist in the <a href="https://mingtiantan.github.io/aerial-manipulation/">aerial manipulation project</a>. I am writing it down because I think it is the right next problem, and because I would like to spend a PhD on it. If you run a lab where this belongs, I would be glad to talk.</p>
-        <p class="note">Mingtian Tan · <a href="mailto:mingtian.tan20@gmail.com">mingtian.tan20@gmail.com</a>. All illustrations in Part 1 are from Wikimedia Commons under their own licences (credits under each image; full list in <a href="https://github.com/MingtianTan/Sandevistan/blob/main/assets/media/CREDITS.md"><code>assets/media/CREDITS.md</code></a>); the figures in Parts 1–2 are drawn for this page. Sandevistan is a name from Cyberpunk 2077 by CD Projekt Red, used here as a nickname.</p>
+        <p class="note">Mingtian Tan · <a href="mailto:mingtian.tan20@gmail.com">mingtian.tan20@gmail.com</a>. All illustrations in Part 1 are from Wikimedia Commons under their own licences (credits under each image; full list in <a href="https://github.com/MingtianTan/Sandevistan/blob/main/assets/media/CREDITS.md"><code>assets/media/CREDITS.md</code></a>); the figures in Parts 1–2 are drawn for this page. The two clips under the title are streamed from GIPHY and belong to Warner Bros. and to Studio Trigger, CD PROJEKT RED and Netflix. Sandevistan is a name from Cyberpunk 2077 by CD Projekt Red, used here as a nickname.</p>
       </div>
     </section>
     </details>
@@ -416,6 +436,6 @@
   <footer>
     <div class="wrap"><p>SPINE / Sandevistan · a reflex layer for robot foundation models · research vision, October 2026.</p></div>
   </footer>
-  <script src="main.js?v=20261021c"></script>
+  <script src="main.js?v=20261021d"></script>
 </body>
 </html>

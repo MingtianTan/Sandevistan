@@ -8,3 +8,10 @@ Files downloaded from Wikimedia Commons on 2026-10-21. Each stays under its own 
 | `cockroach_escape.jpg` | File:Cockroach escape reflex.jpg | Nickfox14 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [https://commons.wikimedia.org/wiki/File:Cockroach_escape_reflex.jpg](https://commons.wikimedia.org/wiki/File:Cockroach_escape_reflex.jpg) |
 | `knee_jerk_arc.png` | File:Patellar tendon reflex arc.png | Amiya Sarkar | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [https://commons.wikimedia.org/wiki/File:Patellar_tendon_reflex_arc.png](https://commons.wikimedia.org/wiki/File:Patellar_tendon_reflex_arc.png) |
 | `vor.svg` | File:Vestibulo-ocular reflex EN.svg | .Koen | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [https://commons.wikimedia.org/wiki/File:Vestibulo-ocular_reflex_EN.svg](https://commons.wikimedia.org/wiki/File:Vestibulo-ocular_reflex_EN.svg) |
+
+## Clips streamed from GIPHY (not stored in this repository)
+
+| Where | Clip | Rights | Source |
+|---|---|---|---|
+| Under the title, left | *The Matrix* (1999), rooftop bullet dodge | Warner Bros. | [giphy.com/gifs/matrix-the-neo-ZpmxRuLshtGVy](https://giphy.com/gifs/matrix-the-neo-ZpmxRuLshtGVy) |
+| Under the title, right | *Cyberpunk: Edgerunners* (2022), Sandevistan activation, official GIF | Studio Trigger, CD PROJEKT RED, Netflix | [giphy.com/gifs/…-1yz43vX5y7X5zHVR2y](https://giphy.com/gifs/Edgerunners-cyberpunk-edgerunners-activating-sandevistan-slows-time-down-1yz43vX5y7X5zHVR2y) |

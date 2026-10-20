@@ -62,6 +62,11 @@
     cards.forEach((c) => reveal.observe(c));
   }
 
+  // ---- Clips under the title: still frames with controls when the system asks for less motion -------
+  if (reduceMotion) {
+    document.querySelectorAll(".reel video").forEach((video) => { video.removeAttribute("autoplay"); video.pause(); video.controls = true; });
+  }
+
   // ---- Reaction test: you vs a spinal reflex vs a VLA re-plan ------------------------------------
   const lab = document.getElementById("reaction-lab");
   if (lab) {
