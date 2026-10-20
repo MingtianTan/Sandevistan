@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 440" width="1180" height="440" role="img" aria-label="Three control loops: VLA, SPINE reflex layer, low-level controller">
+<defs><marker id="a-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#19e6ff"/></marker><marker id="a-mag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ff2fd1"/></marker><marker id="a-yel" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ffe34d"/></marker><marker id="a-soft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a9b6c5"/></marker><filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#1a2230" stroke-width="1"/></pattern></defs>
+<rect width="1180" height="440" fill="#0b0f15"/>
+<rect width="1180" height="440" fill="url(#grid)" opacity="0.6"/>
+<rect x="40" y="70" width="320" height="230" rx="8" fill="#121824" stroke="#243041"/>
+<rect x="40" y="70" width="320" height="4" rx="2" fill="#ff2fd1" filter="url(#glow)"/>
+<text x="56" y="106" font-size="22" font-weight="700" fill="#ff2fd1" font-family="'Rajdhani','Source Sans 3',system-ui,sans-serif">VLA  ·  cortex</text>
+<text x="344" y="106" font-size="13" fill="#6f7f92" text-anchor="end" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace">1–10 Hz</text>
+<text x="56" y="132" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">language, images, proprioception</text>
+<text x="56" y="151" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">plans an action chunk: 50 steps at 20 Hz</text>
+<text x="56" y="170" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">inference 100–300 ms, re-plans at 1–10 Hz</text>
+<text x="56" y="189" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif"></text>
+<text x="56" y="208" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">knows what to do, not how the</text>
+<text x="56" y="227" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">world moved in the last 50 ms</text>
+<rect x="430" y="70" width="320" height="230" rx="8" fill="#121824" stroke="#243041"/>
+<rect x="430" y="70" width="320" height="4" rx="2" fill="#19e6ff" filter="url(#glow)"/>
+<text x="446" y="106" font-size="22" font-weight="700" fill="#19e6ff" font-family="'Rajdhani','Source Sans 3',system-ui,sans-serif">SPINE  ·  spinal cord</text>
+<text x="734" y="106" font-size="13" fill="#6f7f92" text-anchor="end" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace">100–500 Hz</text>
+<text x="446" y="132" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">IMU, joint and body velocities,</text>
+<text x="446" y="151" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">fast visual features, the VLA's chunk</text>
+<text x="446" y="170" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">and intent token</text>
+<text x="446" y="189" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif"></text>
+<text x="446" y="208" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">outputs a correction, a time-scaling</text>
+<text x="446" y="227" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">of the plan, or a takeover</text>
+<rect x="820" y="70" width="320" height="230" rx="8" fill="#121824" stroke="#243041"/>
+<rect x="820" y="70" width="320" height="4" rx="2" fill="#ffe34d" filter="url(#glow)"/>
+<text x="836" y="106" font-size="22" font-weight="700" fill="#ffe34d" font-family="'Rajdhani','Source Sans 3',system-ui,sans-serif">controller  ·  muscle</text>
+<text x="1124" y="106" font-size="13" fill="#6f7f92" text-anchor="end" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace">120–1000 Hz</text>
+<text x="836" y="132" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">MPC / PID / joint servos</text>
+<text x="836" y="151" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">tracks whatever target it is given</text>
+<text x="836" y="170" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif"></text>
+<text x="836" y="189" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">per-robot adapter: body twist</text>
+<text x="836" y="208" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">and wrench targets → this robot's</text>
+<text x="836" y="227" font-size="14" fill="#a9b6c5" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">actuators</text>
+<line x1="362" y1="150" x2="428" y2="150" stroke="#ff2fd1" stroke-width="2.5" marker-end="url(#a-mag)"/>
+<text x="395" y="128" font-size="11.5" fill="#ff2fd1" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace">chunk +</text><text x="395" y="141" font-size="11.5" fill="#ff2fd1" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace">intent</text>
+<line x1="428" y1="222" x2="362" y2="222" stroke="#19e6ff" stroke-width="2.5" marker-end="url(#a-cyan)"/>
+<text x="395" y="243" font-size="11.5" fill="#19e6ff" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace">state</text>
+<text x="395" y="256" font-size="11.5" fill="#19e6ff" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace">token</text>
+<line x1="752" y1="185" x2="818" y2="185" stroke="#19e6ff" stroke-width="2.5" marker-end="url(#a-cyan)"/>
+<text x="785" y="163" font-size="11.5" fill="#19e6ff" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace">corrected</text>
+<text x="785" y="176" font-size="11.5" fill="#19e6ff" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace">target</text>
+<rect x="430" y="330" width="320" height="60" rx="8" fill="#121824" stroke="#19e6ff" stroke-dasharray="4 3"/>
+<text x="590" y="356" font-size="14" fill="#e8eef5" text-anchor="middle" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">fast senses: IMU · joint encoders · optical flow / event camera</text>
+<text x="590" y="376" font-size="12" fill="#6f7f92" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace">the vestibular system and muscle spindles of the robot</text>
+<line x1="590" y1="328" x2="590" y2="304" stroke="#19e6ff" stroke-width="2" marker-end="url(#a-cyan)"/>
+<rect x="40" y="330" width="320" height="60" rx="8" fill="#121824" stroke="#ff2fd1" stroke-dasharray="4 3"/>
+<text x="200" y="356" font-size="14" fill="#e8eef5" text-anchor="middle" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">slow senses: cameras at 20 Hz · language</text>
+<text x="200" y="376" font-size="12" fill="#6f7f92" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace">what the eyes and ears tell the cortex</text>
+<line x1="200" y1="328" x2="200" y2="304" stroke="#ff2fd1" stroke-width="2" marker-end="url(#a-mag)"/>
+<rect x="820" y="330" width="320" height="60" rx="8" fill="#121824" stroke="#ffe34d" stroke-dasharray="4 3"/>
+<text x="980" y="356" font-size="14" fill="#e8eef5" text-anchor="middle" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">any body: hexarotor · quadruped · wheeled arm</text>
+<text x="980" y="376" font-size="12" fill="#6f7f92" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace">same reflex layer, new adapter</text>
+<line x1="980" y1="304" x2="980" y2="328" stroke="#ffe34d" stroke-width="2" marker-end="url(#a-yel)"/>
+<text x="40" y="36" font-size="15" fill="#6f7f92" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace">slow · deliberate</text>
+<text x="1140" y="36" font-size="15" fill="#6f7f92" text-anchor="end" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace">fast · reflexive</text>
+<line x1="190" y1="31" x2="975" y2="31" stroke="#243041" stroke-width="1.5" marker-end="url(#a-soft)"/>
+<text x="590" y="425" font-size="13" fill="#6f7f92" text-anchor="middle" font-family="'Source Sans 3','Segoe UI',system-ui,sans-serif">SPINE sits between the plan and the actuators: it never needs the language model to close the loop.</text>
+</svg>

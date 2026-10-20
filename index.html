@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPINE · Sandevistan — a reflex layer for robot foundation models</title>
+  <meta name="description" content="Research vision: a small, embodiment-agnostic reflex module that lives between a vision-language-action model and the actuators, reacts in milliseconds, slows the plan's time when it must and overrides it when it has to.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20261021c">
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top"><span class="brand-mark">SPINE</span> <span class="brand-sub">/ Sandevistan</span></a>
+      <ul>
+        <li><a href="#reflexes">Reflexes</a></li>
+        <li><a href="#idea">The idea</a></li>
+        <li><a href="#why-now">Why now</a></li>
+        <li><a href="#path">A path</a></li>
+        <li><a href="#foundations">Foundations</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-text">
+          <p class="byline"><span class="chip live">research vision</span> <span class="chip">not built yet</span> <span class="chip">PhD proposal</span> <span class="date">Mingtian Tan · October 2026</span></p>
+          <h1 data-text="Bullet time for robot foundation models">Bullet time for robot foundation models</h1>
+          <p class="lede">Vision-language-action models decide at the speed of a conscious thought. Bodies get hit at the speed of a spinal reflex. <b>SPINE</b> (codename <b>Sandevistan</b>) is a small, embodiment-agnostic reflex layer that lives between the VLA's plan and the actuators: it reacts in milliseconds, slows the plan's clock when it must, and overrides it when it has to.</p>
+          <p class="lede-small">Named after the <em>Sandevistan</em> of Cyberpunk 2077, a spinal implant that lets its owner move while the world stands still, and after the bullet-time shots of The Matrix. In the body the trick is older than either: it is the spinal cord.</p>
+        </div>
+        <figure class="hero-art" aria-label="Animated reflex arc: a spinal loop answers in about 30 milliseconds, a cortical loop in hundreds">
+          <svg viewBox="0 0 560 330" width="100%" role="img">
+            <defs>
+              <filter id="g" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <path id="p-aff" d="M 92 150 C 200 110 290 130 345 160"/>
+              <path id="p-cord" d="M 345 160 C 355 175 365 185 375 196"/>
+              <path id="p-eff" d="M 375 196 C 300 240 190 250 100 232"/>
+              <path id="p-up" d="M 350 150 C 380 90 430 55 475 48"/>
+              <path id="p-down" d="M 478 70 C 450 110 420 160 378 192"/>
+            </defs>
+            <!-- body: limb, receptor, muscle -->
+            <rect x="40" y="128" width="52" height="44" rx="10" class="node node-sense"/>
+            <text x="66" y="156" class="lbl" text-anchor="middle">sensor</text>
+            <text x="66" y="118" class="lbl-s" text-anchor="middle">skin · spindle · IMU</text>
+            <rect x="40" y="210" width="60" height="44" rx="10" class="node node-muscle" id="muscle"/>
+            <text x="70" y="238" class="lbl" text-anchor="middle">muscle</text>
+            <text x="70" y="276" class="lbl-s" text-anchor="middle">actuator</text>
+            <!-- spinal cord -->
+            <ellipse cx="365" cy="178" rx="52" ry="70" class="node node-cord"/>
+            <text x="365" y="172" class="lbl" text-anchor="middle">spinal</text>
+            <text x="365" y="192" class="lbl" text-anchor="middle">cord</text>
+            <!-- cortex -->
+            <ellipse cx="490" cy="58" rx="56" ry="36" class="node node-brain"/>
+            <text x="490" y="63" class="lbl" text-anchor="middle">cortex</text>
+            <!-- paths -->
+            <use href="#p-aff" class="wire wire-sense"/>
+            <use href="#p-cord" class="wire wire-sense"/>
+            <use href="#p-eff" class="wire wire-motor"/>
+            <use href="#p-up" class="wire wire-brain"/>
+            <use href="#p-down" class="wire wire-brain"/>
+            <!-- spinal pulse: sensor -> cord -> muscle in 0.7 s of a 3 s cycle -->
+            <circle r="6" class="pulse pulse-sense">
+              <animateMotion dur="3s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;0.1;1"><mpath href="#p-aff"/></animateMotion>
+              <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;0.1;0.101;1"/>
+            </circle>
+            <circle r="6" class="pulse pulse-sense">
+              <animateMotion dur="3s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.1;0.13;1"><mpath href="#p-cord"/></animateMotion>
+              <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.1;0.101;0.13;0.131;1"/>
+            </circle>
+            <circle r="6" class="pulse pulse-motor">
+              <animateMotion dur="3s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.13;0.23;1"><mpath href="#p-eff"/></animateMotion>
+              <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.13;0.131;0.23;0.231;1"/>
+            </circle>
+            <!-- cortical pulse: up, think, down, then the muscle -->
+            <circle r="5" class="pulse pulse-brain">
+              <animateMotion dur="3s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.1;0.3;1"><mpath href="#p-up"/></animateMotion>
+              <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.1;0.101;0.3;0.301;1"/>
+            </circle>
+            <circle r="5" class="pulse pulse-brain">
+              <animateMotion dur="3s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.6;0.85;1"><mpath href="#p-down"/></animateMotion>
+              <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.6;0.601;0.85;0.851;1"/>
+            </circle>
+            <circle cx="490" cy="58" r="56" class="think">
+              <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="0;0;0.35;0;0.35;0;0" keyTimes="0;0.3;0.38;0.46;0.54;0.6;1"/>
+            </circle>
+            <!-- muscle flashes -->
+            <rect x="40" y="210" width="60" height="44" rx="10" class="flash">
+              <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="0;0;0.9;0;0;0.5;0;0" keyTimes="0;0.23;0.25;0.33;0.85;0.87;0.95;1"/>
+            </rect>
+            <!-- labels -->
+            <text x="215" y="100" class="lbl-c" text-anchor="middle">spinal loop · tens of ms</text>
+            <text x="300" y="268" class="lbl-c" text-anchor="middle">no cortex needed</text>
+            <text x="492" y="116" class="lbl-m" text-anchor="middle">cortical loop</text>
+            <text x="492" y="131" class="lbl-m" text-anchor="middle">100s of ms</text>
+            <text x="280" y="316" class="lbl-s" text-anchor="middle">a VLA closes its loop through the cortex path; SPINE adds the spinal one</text>
+          </svg>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Part 1: reflexes -->
+    <details class="part-block" style="--part-color: var(--cyan)">
+      <summary class="part" id="reflexes">
+        <span class="part-head">
+          <span>
+            <span class="part-label">Part 1</span>
+            <h2 class="part-title">How animals act before they think</h2>
+          </span>
+          <span class="part-toggle" aria-hidden="true"></span>
+        </span>
+      </summary>
+
+    <section id="reflex-intro">
+      <div class="wrap">
+        <h2>The nervous system runs on several clocks</h2>
+        <p>A conscious reaction to something you see takes about 200 ms. A spinal reflex has acted in 20–40 ms, the eye-stabilising reflex in about 10 ms, and a fish has already turned away from a predator in the same time. These are not the brain being fast; they are loops that <b>do not go through the brain at all</b>. The cortex sets goals and tunes the reflexes, the spinal cord and brainstem execute, and when the two disagree in an emergency the reflex wins first and the cortex finds out afterwards.</p>
+        <figure class="figure">
+          <a href="assets/figures/latency_ladder.png" target="_blank" rel="noopener"><img src="assets/figures/latency_ladder.png" width="2360" height="840" alt="Reaction latencies of animal reflexes and robot control loops on one logarithmic time axis"></a>
+          <figcaption><b>Figure 1.</b> Biology and robots on one time axis. A VLA's inference and its action chunk sit where conscious decisions sit; nothing on the robot side plays the role of the spinal cord. Order-of-magnitude figures from the literature.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="reflex-examples">
+      <div class="wrap">
+        <h2>Five reflexes worth copying</h2>
+        <div class="cards">
+          <article class="card">
+            <a href="assets/media/knee_jerk_arc.png" target="_blank" rel="noopener"><img src="assets/media/knee_jerk_arc.png" alt="Diagram of the patellar tendon reflex arc" loading="lazy"></a>
+            <h3>Stretch reflex (knee-jerk)</h3>
+            <p>A tap stretches the quadriceps; muscle spindles fire, one synapse in the spinal cord, and the muscle contracts about 30 ms later. The same loop keeps posture up against every small push, all day, without a thought. <b>Lesson: a one-hop loop with the right sensor beats a smart loop that is late.</b></p>
+            <p class="credit">Image: Amiya Sarkar, Wikimedia Commons, CC BY-SA 4.0.</p>
+          </article>
+          <article class="card">
+            <a href="assets/media/crossed_extensor.jpg" target="_blank" rel="noopener"><img src="assets/media/crossed_extensor.jpg" alt="Diagram of the withdrawal and crossed extensor reflexes" loading="lazy"></a>
+            <h3>Withdrawal and crossed-extensor reflex</h3>
+            <p>Step on a nail: the leg lifts before the pain is felt, and the <em>other</em> leg stiffens so you do not fall. One stimulus, a coordinated whole-body response, all wired below the brain. <b>Lesson: reflexes are not single-joint; they know the body.</b></p>
+            <p class="credit">Image: Cenveo / OpenStax Anatomy &amp; Physiology, Wikimedia Commons, CC BY 4.0.</p>
+          </article>
+          <article class="card">
+            <a href="assets/media/vor.svg" target="_blank" rel="noopener"><img src="assets/media/vor.svg" alt="Diagram of the vestibulo-ocular reflex" loading="lazy"></a>
+            <h3>Vestibulo-ocular reflex</h3>
+            <p>Turn your head and the eyes counter-rotate within about 10 ms, driven by the inner ear's accelerometers and gyroscopes. The image stays still while you move. <b>Lesson: the IMU is the fastest sense there is, and it belongs in the reflex, not in the planner.</b></p>
+            <p class="credit">Image: .Koen, Wikimedia Commons, CC BY-SA 4.0.</p>
+          </article>
+          <article class="card">
+            <a href="assets/media/cockroach_escape.jpg" target="_blank" rel="noopener"><img src="assets/media/cockroach_escape.jpg" alt="Diagram of the cockroach escape reflex" loading="lazy"></a>
+            <h3>Escape reflexes</h3>
+            <p>A puff of wind on a cockroach's cerci reaches giant interneurons and it is turning away in tens of milliseconds. A fish's Mauthner cell triggers a C-start in about 10 ms. These circuits <em>take over</em> whatever the animal was doing. <b>Lesson: an override path with the authority to interrupt the plan.</b></p>
+            <p class="credit">Image: Nickfox14, Wikimedia Commons, CC BY-SA 4.0.</p>
+          </article>
+          <article class="card card-wide">
+            <div class="stumble">
+              <svg viewBox="0 0 420 150" role="img" aria-label="Same touch to the paw, opposite response depending on the phase of the step">
+                <text x="105" y="22" class="s-title" text-anchor="middle">touch during SWING</text>
+                <path d="M 30 120 H 180" class="s-ground"/>
+                <path d="M 60 120 L 75 80 L 110 60 L 130 90" class="s-leg s-leg-a"/>
+                <path d="M 130 90 C 140 70 130 55 118 52" class="s-leg s-leg-b"/>
+                <circle cx="80" cy="84" r="5" class="s-touch"/>
+                <text x="105" y="140" class="s-lbl" text-anchor="middle">lifts higher, steps over</text>
+                <text x="315" y="22" class="s-title" text-anchor="middle">touch during STANCE</text>
+                <path d="M 240 120 H 390" class="s-ground"/>
+                <path d="M 300 120 L 305 80 L 330 60 L 350 95" class="s-leg s-leg-c"/>
+                <circle cx="304" cy="100" r="5" class="s-touch"/>
+                <path d="M 300 120 L 304 96" class="s-leg s-leg-d"/>
+                <text x="315" y="140" class="s-lbl" text-anchor="middle">pushes down harder</text>
+              </svg>
+            </div>
+            <div>
+              <h3>The stumbling corrective reaction</h3>
+              <p>Brush the top of a walking cat's paw while the leg swings forward and the leg lifts higher to clear the obstacle. Brush it while the paw is planted and the leg <em>pushes down harder</em>. Same stimulus, opposite response, chosen by the phase of the ongoing movement (Forssberg, 1979). <b>Lesson: a good reflex reads the plan's phase before it acts.</b> This is the biological version of the "bullet time" rule below.</p>
+            </div>
+          </article>
+        </div>
+        <div class="lab" id="reaction-lab">
+          <h3>Try it: your reflexes against the machines</h3>
+          <p class="sub">Press <b>Start</b>, wait for the pad to light up, then click (or tap) it as fast as you can. Your time is compared with a spinal reflex and with a VLA that has to finish one inference and start a new chunk.</p>
+          <div class="lab-row"><button class="btn" type="button" data-rt-start>Start</button><span class="readout" data-rt-msg>idle</span></div>
+          <div class="pad" data-rt-pad tabindex="0">wait for yellow</div>
+          <div class="race" aria-live="polite">
+            <div class="race-row you"><span>you</span><div class="race-bar"><i data-rt-bar="you"></i></div><b data-rt-val="you">–</b></div>
+            <div class="race-row spine"><span>spinal reflex / SPINE</span><div class="race-bar"><i data-rt-bar="spine" style="width: 6%"></i></div><b data-rt-val="spine">30 ms</b></div>
+            <div class="race-row vla"><span>VLA re-plan</span><div class="race-bar"><i data-rt-bar="vla" style="width: 60%"></i></div><b data-rt-val="vla">300 ms</b></div>
+          </div>
+        </div>
+        <div class="takeaways">
+          <h3>What the spinal cord teaches a robot designer</h3>
+          <ul class="points">
+            <li><b>Separate clocks.</b> Fast loops with fast senses, slow loops with rich senses; neither waits for the other.</li>
+            <li><b>Phase-aware.</b> The right correction depends on where the movement is; reflexes read it from proprioception.</li>
+            <li><b>Authority.</b> In an emergency the reflex acts first; the plan is informed, then revised.</li>
+            <li><b>Generic circuits.</b> The same motifs serve legs, arms, eyes and fins; the body-specific part is the wiring to the muscles.</li>
+            <li><b>Tuned, not replaced.</b> The cortex gates reflex gains for the task at hand instead of recomputing the reflex.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    </details>
+
+    <!-- Part 2: the idea -->
+    <details class="part-block" style="--part-color: var(--mag)">
+      <summary class="part" id="idea">
+        <span class="part-head">
+          <span>
+            <span class="part-label">Part 2</span>
+            <h2 class="part-title">The idea: SPINE</h2>
+          </span>
+          <span class="part-toggle" aria-hidden="true"></span>
+        </span>
+      </summary>
+
+    <section id="idea-core">
+      <div class="wrap">
+        <h2>A reflex layer between the plan and the actuators</h2>
+        <p>A VLA such as π0.5 or GR00T N1 reads language and images, thinks for 100–300 ms, and emits a chunk of actions that the robot then plays back for a second or more. Everything that happens to the body inside that window, a gust, a slip, a bump, a payload shift, is handled by whatever low-level controller sits underneath, which knows nothing about the task. <b>SPINE</b> is the missing middle: a small network that runs at hundreds of hertz on proprioception and fast visual cues, sees the VLA's chunk and its intent, and decides in each millisecond whether to let the plan run, correct it, slow it down, or take over.</p>
+        <figure class="figure">
+          <a href="assets/figures/three_loops.png" target="_blank" rel="noopener"><img src="assets/figures/three_loops.png" width="2360" height="880" alt="Three control loops: the VLA as cortex, SPINE as spinal cord, the controller as muscle"></a>
+          <figcaption><b>Figure 2.</b> Three loops, three clocks. SPINE takes the VLA's chunk and intent as input, the robot's fast senses as its own, and hands a corrected target to the controller. It talks back to the VLA with a state token, so the planner learns to expect it.</figcaption>
+        </figure>
+        <ul class="points">
+          <li><b>Inputs.</b> IMU, joint and body velocities, contact and force estimates, cheap high-rate visual features (optical flow, an event camera), plus the VLA's current chunk and intent token.</li>
+          <li><b>Outputs.</b> A correction to the chunk in body coordinates, a scaling of the chunk's phase velocity, or a takeover; and a state token back to the VLA.</li>
+          <li><b>Model.</b> Small, a few million parameters, trained with supervision from corrections made under injected disturbances; small enough to run on an embedded CPU or a microcontroller-class accelerator at 200–500 Hz.</li>
+          <li><b>Interface to the VLA.</b> The intent token is injected into the VLA (an intermediate layer or the action expert) and the VLA is fine-tuned with SPINE in the loop, so the planner's chunks come out already expecting a reflex underneath. Replacing the VLA means re-training that injection, not the reflex.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="idea-bullet-time">
+      <div class="wrap">
+        <h2>Bullet time: own the plan's clock</h2>
+        <p>The obvious way to override a plan is to replace its actions. That throws the plan away and leaves the VLA confused about where its chunk went. The cat's stumbling reaction suggests a better rule: act <em>relative to the phase of the plan</em>. SPINE owns the phase variable that plays the VLA's chunk. Under a small disturbance it adds a residual and keeps the clock running. Under a large one it slows the clock to a crawl, corrects the body while the plan "waits", then lets the clock catch up. The chunk is never discarded, so when the disturbance is over, the robot is exactly where the plan expects it to be, just a little later. Dynamic movement primitives have used phase stopping for perturbations for two decades; here the phase belongs to a learned reflex and the plan comes from a foundation model.</p>
+        <figure class="figure">
+          <a href="assets/figures/bullet_time.png" target="_blank" rel="noopener"><img src="assets/figures/bullet_time.png" width="2360" height="840" alt="Bullet time: the reflex layer slows the plan's phase during a disturbance, and the three override levels"></a>
+          <figcaption><b>Figure 3.</b> Left: the plan's phase against wall-clock time with and without SPINE during a gust. Right: the three levels of authority, from a residual to a takeover with a "plan broken" token that asks the VLA for a new chunk.</figcaption>
+        </figure>
+        <div class="lab" id="bullet-lab">
+          <h3>Try it: a gust hits a robot that is playing a plan</h3>
+          <p class="sub">The magenta dot is where the plan says the robot should be right now; the cyan one is the robot. Hit it with a gust and watch what each mode does with the plan's clock. Nothing here is learned, it is the control rule, drawn.</p>
+          <div class="lab-row">
+            <button class="btn ghost" type="button" data-mode="none" aria-pressed="true">no reflex</button>
+            <button class="btn ghost" type="button" data-mode="residual" aria-pressed="false">residual</button>
+            <button class="btn ghost" type="button" data-mode="bullet" aria-pressed="false">bullet time</button>
+            <button class="btn mag" type="button" data-gust>Gust!</button>
+          </div>
+          <canvas class="sim" data-sim width="1100" height="320" aria-label="Simulation of a robot following a plan under a gust"></canvas>
+          <div class="legend"><span><i style="background: var(--mag)"></i>plan target</span><span><i style="background: var(--cyan)"></i>robot</span><span><i style="background: var(--org)"></i>gust</span><span><i style="background: var(--yel)"></i>plan clock</span></div>
+          <p class="readout" data-sim-readout></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="idea-general">
+      <div class="wrap">
+        <h2>One reflex, many bodies</h2>
+        <p>Reflex circuits are the most conserved part of the vertebrate nervous system; what differs between a fin and a leg is the wiring to the muscles. SPINE copies the split. Its inputs and outputs are body-level quantities every robot has, body twist, acceleration, contact, the plan's phase, and a thin adapter per robot maps its output onto that robot's controller: wrench targets for a multirotor's allocator, foot forces for a quadruped's MPC, joint velocities for an arm. The reflex is pre-trained across several bodies and a new one gets an adapter and a short fine-tune, the way a VLA gets a new action head.</p>
+        <div class="stats">
+          <div class="stat"><b>&lt; 10 ms</b><span>stimulus to corrected target, the goal for the loop</span></div>
+          <div class="stat"><b>3 levels</b><span>residual · bullet time · takeover</span></div>
+          <div class="stat"><b>≥ 3 bodies</b><span>hexarotor, quadruped, wheeled arm, before the word "general" is used</span></div>
+        </div>
+      </div>
+    </section>
+    </details>
+
+    <!-- Part 3: why now -->
+    <details class="part-block" style="--part-color: var(--yel)">
+      <summary class="part" id="why-now">
+        <span class="part-head">
+          <span>
+            <span class="part-label">Part 3</span>
+            <h2 class="part-title">Why now: the big labs are splitting fast from slow</h2>
+          </span>
+          <span class="part-toggle" aria-hidden="true"></span>
+        </span>
+      </summary>
+
+    <section id="why-now-cards">
+      <div class="wrap">
+        <h2>Similar work from large labs</h2>
+        <p>Within 2025 every major robot-learning group moved to a two-system design: a slow vision-language planner and a fast action generator. That is the cortex and the brainstem. None of them has a spinal cord yet: a layer that is independent of the body, runs at reflex speed on reflex senses, and has the authority to override.</p>
+        <div class="cards">
+          <article class="card">
+            <h3>Figure AI · Helix <span class="when">Feb 2025</span></h3>
+            <p>"System 2", a 7B-parameter VLM at 7–9 Hz, produces a latent that "System 1", an 80M-parameter visuomotor transformer, turns into whole-upper-body commands at 200 Hz. The two run as separate processes; S1 observes the robot at a higher rate than S2. <a href="https://www.figure.ai/news/helix">figure.ai/news/helix</a></p>
+            <p class="gap">Closest in spirit. S1 is trained for one humanoid and does not override S2; it executes it.</p>
+          </article>
+          <article class="card">
+            <h3>NVIDIA · GR00T N1 <span class="when">Mar 2025</span></h3>
+            <p>System 2 is an Eagle-2 VLM at 10 Hz; System 1 is a diffusion transformer that "generates closed-loop motor actions at a higher frequency (120 Hz)" with 16-step chunks, trained end to end across human video, synthetic and real robot data. <a href="https://arxiv.org/abs/2503.14734">arXiv:2503.14734</a></p>
+            <p class="gap">Fast system, but co-trained with the slow one and tied to the embodiment heads; no separate reflex authority.</p>
+          </article>
+          <article class="card">
+            <h3>Physical Intelligence · real-time chunking <span class="when">NeurIPS 2025</span></h3>
+            <p>Treats asynchronous chunk generation as inpainting: the next chunk is produced while the current one plays, frozen where the robot is already committed, so π0.5 keeps moving through 300 ms of inference latency. <a href="https://arxiv.org/abs/2506.07339">arXiv:2506.07339</a> · <a href="https://pi.website/research/real_time_chunking">pi.website</a></p>
+            <p class="gap">Solves the pause between chunks, not the chunk being wrong after a push. Complementary: SPINE would sit under it.</p>
+          </article>
+          <article class="card">
+            <h3>Google DeepMind · Gemini Robotics 1.5 and On-Device <span class="when">Jun–Sep 2025</span></h3>
+            <p>Gemini Robotics-ER 1.5 plans and reasons, Gemini Robotics 1.5 acts and can "think before acting"; motions learned on ALOHA 2 transfer to Apptronik's Apollo and a bi-arm Franka. The On-Device model runs locally for latency-sensitive use. <a href="https://deepmind.google/discover/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/">DeepMind blog</a> · <a href="https://deepmind.google/models/gemini-robotics/on-device/">On-Device</a></p>
+            <p class="gap">Cross-embodiment transfer at the planning level; still a VLA-speed loop.</p>
+          </article>
+          <article class="card">
+            <h3>Boston Dynamics + TRI · Atlas Large Behavior Model <span class="when">Aug 2025</span></h3>
+            <p>One model directly controls the whole humanoid, hands and feet alike, through a long sequence of handling and walking; researchers push boxes around mid-task and Atlas adjusts. <a href="https://www.tri.global/news/ai-powered-robot-boston-dynamics-and-toyota-research-institute-takes-key-step-towards-general">TRI press release</a></p>
+            <p class="gap">Whole-body learning at policy rate; the reflex-speed recovery still comes from Boston Dynamics' underlying controllers.</p>
+          </article>
+          <article class="card card-accent">
+            <h3>What is still missing</h3>
+            <ul class="points tight">
+              <li>A fast layer that is <b>independent of the body</b> and the VLA.</li>
+              <li><b>Override semantics</b>: when the reflex may interrupt the plan, and how the plan resumes.</li>
+              <li><b>Phase control</b> of foundation-model chunks.</li>
+              <li>A <b>benchmark of reflexes</b>: latency and recovery under pushes, gusts, slips and payload changes, not only task success.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+    </details>
+
+    <!-- Part 4: a path -->
+    <details class="part-block" style="--part-color: var(--grn)">
+      <summary class="part" id="path">
+        <span class="part-head">
+          <span>
+            <span class="part-label">Part 4</span>
+            <h2 class="part-title">A path, if someone lets me walk it</h2>
+          </span>
+          <span class="part-toggle" aria-hidden="true"></span>
+        </span>
+      </summary>
+
+    <section id="path-steps">
+      <div class="wrap">
+        <h2>Four steps</h2>
+        <ol class="steps">
+          <li><b>A reflex benchmark in simulation.</b> Three bodies in Isaac Lab, a fully actuated hexarotor with an arm, a quadruped and a wheeled mobile manipulator, under a shared disturbance suite: wind and gusts, pushes, slips, payload changes, sensor dropouts. Metrics: time from disturbance to corrected target, recovery rate, and the change in task success with and without the reflex.</li>
+          <li><b>Train SPINE from corrections.</b> Record expert controllers under injected disturbances and keep the clean correction as the label, the recipe that already produced a verified 4,800-episode aerial dataset in the companion project. Pre-train across bodies, add one adapter per body, measure how little a new body needs.</li>
+          <li><b>Plug it under open VLAs.</b> Inject the intent token into π0.5 and GR00T N1, fine-tune with SPINE in the loop, and measure the three override levels: when a residual is enough, when bullet time is needed, when the planner must be interrupted.</li>
+          <li><b>One real robot per class.</b> A hexarotor and a ground platform, with the same reflex and two adapters, hit by the same gusts and pushes as in simulation.</li>
+        </ol>
+        <h3>Open questions I expect to fight with</h3>
+        <ul class="points">
+          <li><b>Arbitration.</b> A VLA may command an aggressive manoeuvre on purpose; the reflex must read the intent token before calling it a disturbance.</li>
+          <li><b>Where the labels come from.</b> Expert corrections are cheap in simulation and scarce on hardware; the sim-to-real gap of a reflex is a gap in dynamics, not in appearance, which is the better kind to have.</li>
+          <li><b>"General" is a claim, not a feature.</b> It is earned on the third body or not at all.</li>
+          <li><b>Compute.</b> Hundreds of hertz on an embedded computer rules out anything with attention over images; the fast senses have to be cheap by design.</li>
+        </ul>
+      </div>
+    </section>
+    </details>
+
+    <!-- Part 5: foundations -->
+    <details class="part-block" style="--part-color: var(--org)">
+      <summary class="part" id="foundations">
+        <span class="part-head">
+          <span>
+            <span class="part-label">Part 5</span>
+            <h2 class="part-title">Foundations</h2>
+          </span>
+          <span class="part-toggle" aria-hidden="true"></span>
+        </span>
+      </summary>
+
+    <section id="foundations-refs">
+      <div class="wrap">
+        <h2>Neuroscience</h2>
+        <ul class="refs">
+          <li><a href="https://doi.org/10.1152/jn.1979.42.4.936">Stumbling corrective reaction: a phase-dependent compensatory reaction during locomotion</a> <span>(Forssberg, J. Neurophysiol. 1979)</span>: the same paw stimulus gives flexion in swing and extension in stance; the origin of the phase rule.</li>
+          <li><a href="https://doi.org/10.1152/physrev.00028.2005">Dynamic sensorimotor interactions in locomotion</a> <span>(Rossignol, Dubuc &amp; Gossard, Physiol. Rev. 2006)</span>: how spinal circuits, sensory feedback and descending commands share the control of walking.</li>
+          <li><a href="https://doi.org/10.1016/j.neuron.2005.05.019">The Mauthner cell half a century later: a neurobiological model for decision-making?</a> <span>(Korn &amp; Faber, Neuron 2005)</span>: the fish escape circuit, a single neuron with the authority to interrupt everything.</li>
+          <li><a href="https://en.wikipedia.org/wiki/Stretch_reflex">Stretch reflex</a>, <a href="https://en.wikipedia.org/wiki/Withdrawal_reflex">withdrawal reflex</a>, <a href="https://en.wikipedia.org/wiki/Vestibulo%E2%80%93ocular_reflex">vestibulo-ocular reflex</a> <span>(overviews)</span>: the three textbook loops used in Part 1.</li>
+        </ul>
+        <h2>Robotics and learning</h2>
+        <ul class="refs">
+          <li><a href="https://arxiv.org/abs/2506.07339">Real-Time Execution of Action Chunking Flow Policies</a> <span>(Black, Galliker &amp; Levine, NeurIPS 2025)</span>: asynchronous chunk execution as inpainting; the slow loop's latency problem, solved from the planner's side.</li>
+          <li><a href="https://arxiv.org/abs/2503.14734">GR00T N1: An Open Foundation Model for Generalist Humanoid Robots</a> <span>(NVIDIA, 2025)</span> and <a href="https://www.figure.ai/news/helix">Helix</a> <span>(Figure AI, 2025)</span>: the two-system designs this proposal extends with a third, spinal, system.</li>
+          <li><a href="https://doi.org/10.1162/NECO_a_00393">Dynamical movement primitives: learning attractor models for motor behaviors</a> <span>(Ijspeert et al., Neural Computation 2013)</span>: phase variables and phase stopping under perturbation, the mechanism behind bullet time.</li>
+          <li><a href="https://arxiv.org/abs/1812.03201">Residual reinforcement learning for robot control</a> <span>(Johannink et al., ICRA 2019)</span>: a learned correction on top of a conventional controller; SPINE's level-1 behaviour, moved under a foundation model.</li>
+          <li><a href="https://arxiv.org/abs/1903.11199">Control barrier functions: theory and applications</a> <span>(Ames et al., ECC 2019)</span>: safety filters with the authority to override a nominal controller; the formal ancestor of level 3.</li>
+          <li><a href="https://mingtiantan.github.io/aerial-manipulation/">Aerial manipulation: keep the arm pretrained, learn flight separately</a> <span>(the companion project)</span>: a Flight DiT feeding an intent token into a fully fine-tuned π0.5, with a verified dataset of 4,800 demonstrations under wind and thrust limits. SPINE generalises its flight module into a reflex layer for any body.</li>
+        </ul>
+      </div>
+    </section>
+    </details>
+
+    <!-- Part 6: about -->
+    <details class="part-block" style="--part-color: var(--ink)">
+      <summary class="part" id="about">
+        <span class="part-head">
+          <span>
+            <span class="part-label">Part 6</span>
+            <h2 class="part-title">About this page</h2>
+          </span>
+          <span class="part-toggle" aria-hidden="true"></span>
+        </span>
+      </summary>
+
+    <section id="about-text">
+      <div class="wrap">
+        <h2>Status and intent</h2>
+        <p>This is a research vision, not a result. Nothing described in Parts 2–4 has been built; the data pipeline, the disturbance models, the specialists and the fully verified dataset that Step 2 relies on exist in the <a href="https://mingtiantan.github.io/aerial-manipulation/">aerial manipulation project</a>. I am writing it down because I think it is the right next problem, and because I would like to spend a PhD on it. If you run a lab where this belongs, I would be glad to talk.</p>
+        <p class="note">Mingtian Tan · <a href="mailto:mingtian.tan20@gmail.com">mingtian.tan20@gmail.com</a>. All illustrations in Part 1 are from Wikimedia Commons under their own licences (credits under each image; full list in <code>assets/media/CREDITS.md</code>); the figures in Parts 1–2 are drawn for this page. Sandevistan is a name from Cyberpunk 2077 by CD Projekt Red, used here as a nickname.</p>
+      </div>
+    </section>
+    </details>
+  </main>
+
+  <footer>
+    <div class="wrap"><p>SPINE / Sandevistan · a reflex layer for robot foundation models · research vision, October 2026.</p></div>
+  </footer>
+  <script src="main.js?v=20261021c"></script>
+</body>
+</html>
