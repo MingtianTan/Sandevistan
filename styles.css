@@ -175,8 +175,6 @@ p { margin: 0 0 14px; }
 .points { margin: 0; padding-left: 1.1em; display: grid; gap: 12px; }
 .points li::marker { color: var(--part-color); }
 .points.tight { gap: 6px; }
-.refs { margin: 0 0 18px; padding-left: 1.1em; display: grid; gap: 10px; }
-.refs span { color: var(--faint); }
 .note { margin: 12px 0 0; font-size: 15px; color: var(--soft); }
 
 /* Figures */
@@ -263,6 +261,8 @@ p { margin: 0 0 14px; }
 
 footer { margin-top: 64px; padding: 24px 0 40px; border-top: 1px solid var(--line); font-size: 14px; color: var(--faint); font-family: var(--mono); }
 footer p { margin: 0; }
+footer p + p { margin-top: 10px; }
+footer .contact { color: var(--soft); }
 
 /* reel: two looping clips under the title, side by side */
 .reel { padding: 22px 0 4px; }

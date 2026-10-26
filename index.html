@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261021e">
+  <link rel="stylesheet" href="styles.css?v=20261025a">
 </head>
 <body>
   <header class="nav">
@@ -18,9 +18,6 @@
         <li><a href="#reflexes">Reflexes</a></li>
         <li><a href="#idea">The idea</a></li>
         <li><a href="#why-now">Why now</a></li>
-        <li><a href="#path">A path</a></li>
-        <li><a href="#foundations">Foundations</a></li>
-        <li><a href="#about">About</a></li>
       </ul>
     </div>
   </header>
@@ -172,7 +169,7 @@
           <article class="card">
             <a href="assets/media/cockroach_escape.jpg" target="_blank" rel="noopener"><img src="assets/media/cockroach_escape.jpg" alt="Diagram of the cockroach escape reflex" loading="lazy"></a>
             <h3>Escape reflexes</h3>
-            <p>A puff of wind on a cockroach's cerci reaches giant interneurons and it is turning away in tens of milliseconds. A fish's Mauthner cell triggers a C-start in about 10 ms. These circuits <em>take over</em> whatever the animal was doing. <b>Lesson: an override path with the authority to interrupt the plan.</b></p>
+            <p>A puff of wind on a cockroach's cerci reaches giant interneurons and it is turning away in tens of milliseconds. A fish's <a href="https://doi.org/10.1016/j.neuron.2005.05.019">Mauthner cell</a> triggers a C-start in about 10 ms. These circuits <em>take over</em> whatever the animal was doing. <b>Lesson: an override path with the authority to interrupt the plan.</b></p>
             <p class="credit">Image: Nickfox14, Wikimedia Commons, CC BY-SA 4.0.</p>
           </article>
           <article class="card card-wide">
@@ -194,7 +191,7 @@
             </div>
             <div>
               <h3>The stumbling corrective reaction</h3>
-              <p>Brush the top of a walking cat's paw while the leg swings forward and the leg lifts higher to clear the obstacle. Brush it while the paw is planted and the leg <em>pushes down harder</em>. Same stimulus, opposite response, chosen by the phase of the ongoing movement (Forssberg, 1979). <b>Lesson: a good reflex reads the plan's phase before it acts.</b> This is the biological version of the "bullet time" rule below.</p>
+              <p>Brush the top of a walking cat's paw while the leg swings forward and the leg lifts higher to clear the obstacle. Brush it while the paw is planted and the leg <em>pushes down harder</em>. Same stimulus, opposite response, chosen by the phase of the ongoing movement (<a href="https://doi.org/10.1152/jn.1979.42.4.936">Forssberg, 1979</a>). <b>Lesson: a good reflex reads the plan's phase before it acts.</b> This is the biological version of the "bullet time" rule below.</p>
             </div>
           </article>
         </div>
@@ -255,10 +252,10 @@
     <section id="idea-bullet-time">
       <div class="wrap">
         <h2>Bullet time: own the plan's clock</h2>
-        <p>The obvious way to override a plan is to replace its actions. That throws the plan away and leaves the VLA confused about where its chunk went. The cat's stumbling reaction suggests a better rule: act <em>relative to the phase of the plan</em>. SPINE owns the phase variable that plays the VLA's chunk. Under a small disturbance it adds a residual and keeps the clock running. Under a large one it slows the clock to a crawl, corrects the body while the plan "waits", then lets the clock catch up. The chunk is never discarded, so when the disturbance is over, the robot is exactly where the plan expects it to be, just a little later. Dynamic movement primitives have used phase stopping for perturbations for two decades; here the phase belongs to a learned reflex and the plan comes from a foundation model.</p>
+        <p>The obvious way to override a plan is to replace its actions. That throws the plan away and leaves the VLA confused about where its chunk went. The cat's stumbling reaction suggests a better rule: act <em>relative to the phase of the plan</em>. SPINE owns the phase variable that plays the VLA's chunk. Under a small disturbance it adds a residual and keeps the clock running. Under a large one it slows the clock to a crawl, corrects the body while the plan "waits", then lets the clock catch up. The chunk is never discarded, so when the disturbance is over, the robot is exactly where the plan expects it to be, just a little later. <a href="https://doi.org/10.1162/NECO_a_00393">Dynamic movement primitives</a> have used phase stopping for perturbations for two decades; here the phase belongs to a learned reflex and the plan comes from a foundation model.</p>
         <figure class="figure">
           <a href="assets/figures/bullet_time.png" target="_blank" rel="noopener"><img src="assets/figures/bullet_time.png" width="2360" height="840" alt="Bullet time: the reflex layer slows the plan's phase during a disturbance, and the three override levels"></a>
-          <figcaption><b>Figure 3.</b> Left: the plan's phase against wall-clock time with and without SPINE during a gust. Right: the three levels of authority, from a residual to a takeover with a "plan broken" token that asks the VLA for a new chunk.</figcaption>
+          <figcaption><b>Figure 3.</b> Left: the plan's phase against wall-clock time with and without SPINE during a gust. Right: the three levels of authority, from a residual to a takeover with a "plan broken" token that asks the VLA for a new chunk. Level 1 is <a href="https://arxiv.org/abs/1812.03201">residual learning</a> (Johannink et al., 2019) moved under a foundation model; level 3 takes the override authority of a <a href="https://arxiv.org/abs/1903.11199">control-barrier-function safety filter</a> (Ames et al., 2019).</figcaption>
         </figure>
         <div class="lab" id="bullet-lab">
           <h3>Try it: a gust hits a robot that is playing a plan</h3>
@@ -285,6 +282,18 @@
           <div class="stat"><b>3 levels</b><span>residual · bullet time · takeover</span></div>
           <div class="stat"><b>≥ 3 bodies</b><span>hexarotor, quadruped, wheeled arm, before the word "general" is used</span></div>
         </div>
+      </div>
+    </section>
+
+    <section id="idea-start">
+      <div class="wrap">
+        <h2>Where I would start</h2>
+        <ol class="steps">
+          <li><b>A reflex benchmark in simulation.</b> A hexarotor with an arm, a quadruped and a wheeled manipulator in Isaac Lab under one disturbance suite (gusts, pushes, slips, payload changes), scored on time to correction and recovery, not only on task success.</li>
+          <li><b>Train SPINE from corrections.</b> Expert controllers under injected disturbances provide the labels, the recipe behind the 4,800-episode dataset of my <a href="https://mingtiantan.github.io/aerial-manipulation/">aerial manipulation project</a>.</li>
+          <li><b>Plug it under open VLAs.</b> Inject the intent token into π0.5 and GR00T N1, fine-tune with SPINE in the loop, and measure when each override level is needed.</li>
+          <li><b>One real robot per class.</b> A hexarotor and a ground platform with the same reflex and two adapters, hit by the same gusts and pushes as in simulation.</li>
+        </ol>
       </div>
     </section>
     </details>
@@ -344,97 +353,14 @@
       </div>
     </section>
     </details>
-
-    <!-- Part 4: a path -->
-    <details class="part-block" style="--part-color: var(--grn)">
-      <summary class="part" id="path">
-        <span class="part-head">
-          <span>
-            <span class="part-label">Part 4</span>
-            <h2 class="part-title">A path, if someone lets me walk it</h2>
-          </span>
-          <span class="part-toggle" aria-hidden="true"></span>
-        </span>
-      </summary>
-
-    <section id="path-steps">
-      <div class="wrap">
-        <h2>Four steps</h2>
-        <ol class="steps">
-          <li><b>A reflex benchmark in simulation.</b> Three bodies in Isaac Lab, a fully actuated hexarotor with an arm, a quadruped and a wheeled mobile manipulator, under a shared disturbance suite: wind and gusts, pushes, slips, payload changes, sensor dropouts. Metrics: time from disturbance to corrected target, recovery rate, and the change in task success with and without the reflex.</li>
-          <li><b>Train SPINE from corrections.</b> Record expert controllers under injected disturbances and keep the clean correction as the label, the recipe that already produced a verified 4,800-episode aerial dataset in the companion project. Pre-train across bodies, add one adapter per body, measure how little a new body needs.</li>
-          <li><b>Plug it under open VLAs.</b> Inject the intent token into π0.5 and GR00T N1, fine-tune with SPINE in the loop, and measure the three override levels: when a residual is enough, when bullet time is needed, when the planner must be interrupted.</li>
-          <li><b>One real robot per class.</b> A hexarotor and a ground platform, with the same reflex and two adapters, hit by the same gusts and pushes as in simulation.</li>
-        </ol>
-        <h3>Open questions I expect to fight with</h3>
-        <ul class="points">
-          <li><b>Arbitration.</b> A VLA may command an aggressive manoeuvre on purpose; the reflex must read the intent token before calling it a disturbance.</li>
-          <li><b>Where the labels come from.</b> Expert corrections are cheap in simulation and scarce on hardware; the sim-to-real gap of a reflex is a gap in dynamics, not in appearance, which is the better kind to have.</li>
-          <li><b>"General" is a claim, not a feature.</b> It is earned on the third body or not at all.</li>
-          <li><b>Compute.</b> Hundreds of hertz on an embedded computer rules out anything with attention over images; the fast senses have to be cheap by design.</li>
-        </ul>
-      </div>
-    </section>
-    </details>
-
-    <!-- Part 5: foundations -->
-    <details class="part-block" style="--part-color: var(--org)">
-      <summary class="part" id="foundations">
-        <span class="part-head">
-          <span>
-            <span class="part-label">Part 5</span>
-            <h2 class="part-title">Foundations</h2>
-          </span>
-          <span class="part-toggle" aria-hidden="true"></span>
-        </span>
-      </summary>
-
-    <section id="foundations-refs">
-      <div class="wrap">
-        <h2>Neuroscience</h2>
-        <ul class="refs">
-          <li><a href="https://doi.org/10.1152/jn.1979.42.4.936">Stumbling corrective reaction: a phase-dependent compensatory reaction during locomotion</a> <span>(Forssberg, J. Neurophysiol. 1979)</span>: the same paw stimulus gives flexion in swing and extension in stance; the origin of the phase rule.</li>
-          <li><a href="https://doi.org/10.1152/physrev.00028.2005">Dynamic sensorimotor interactions in locomotion</a> <span>(Rossignol, Dubuc &amp; Gossard, Physiol. Rev. 2006)</span>: how spinal circuits, sensory feedback and descending commands share the control of walking.</li>
-          <li><a href="https://doi.org/10.1016/j.neuron.2005.05.019">The Mauthner cell half a century later: a neurobiological model for decision-making?</a> <span>(Korn &amp; Faber, Neuron 2005)</span>: the fish escape circuit, a single neuron with the authority to interrupt everything.</li>
-          <li><a href="https://en.wikipedia.org/wiki/Stretch_reflex">Stretch reflex</a>, <a href="https://en.wikipedia.org/wiki/Withdrawal_reflex">withdrawal reflex</a>, <a href="https://en.wikipedia.org/wiki/Vestibulo%E2%80%93ocular_reflex">vestibulo-ocular reflex</a> <span>(overviews)</span>: the three textbook loops used in Part 1.</li>
-        </ul>
-        <h2>Robotics and learning</h2>
-        <ul class="refs">
-          <li><a href="https://arxiv.org/abs/2506.07339">Real-Time Execution of Action Chunking Flow Policies</a> <span>(Black, Galliker &amp; Levine, NeurIPS 2025)</span>: asynchronous chunk execution as inpainting; the slow loop's latency problem, solved from the planner's side.</li>
-          <li><a href="https://arxiv.org/abs/2503.14734">GR00T N1: An Open Foundation Model for Generalist Humanoid Robots</a> <span>(NVIDIA, 2025)</span> and <a href="https://www.figure.ai/news/helix">Helix</a> <span>(Figure AI, 2025)</span>: the two-system designs this proposal extends with a third, spinal, system.</li>
-          <li><a href="https://doi.org/10.1162/NECO_a_00393">Dynamical movement primitives: learning attractor models for motor behaviors</a> <span>(Ijspeert et al., Neural Computation 2013)</span>: phase variables and phase stopping under perturbation, the mechanism behind bullet time.</li>
-          <li><a href="https://arxiv.org/abs/1812.03201">Residual reinforcement learning for robot control</a> <span>(Johannink et al., ICRA 2019)</span>: a learned correction on top of a conventional controller; SPINE's level-1 behaviour, moved under a foundation model.</li>
-          <li><a href="https://arxiv.org/abs/1903.11199">Control barrier functions: theory and applications</a> <span>(Ames et al., ECC 2019)</span>: safety filters with the authority to override a nominal controller; the formal ancestor of level 3.</li>
-          <li><a href="https://mingtiantan.github.io/aerial-manipulation/">Aerial manipulation: keep the arm pretrained, learn flight separately</a> <span>(the companion project)</span>: a Flight DiT feeding an intent token into a fully fine-tuned π0.5, with a verified dataset of 4,800 demonstrations under wind and thrust limits. SPINE generalises its flight module into a reflex layer for any body.</li>
-        </ul>
-      </div>
-    </section>
-    </details>
-
-    <!-- Part 6: about -->
-    <details class="part-block" style="--part-color: var(--ink)">
-      <summary class="part" id="about">
-        <span class="part-head">
-          <span>
-            <span class="part-label">Part 6</span>
-            <h2 class="part-title">About this page</h2>
-          </span>
-          <span class="part-toggle" aria-hidden="true"></span>
-        </span>
-      </summary>
-
-    <section id="about-text">
-      <div class="wrap">
-        <h2>Status and intent</h2>
-        <p>This is a research vision, not a result. Nothing described in Parts 2–4 has been built; the data pipeline, the disturbance models, the specialists and the fully verified dataset that Step 2 relies on exist in the <a href="https://mingtiantan.github.io/aerial-manipulation/">aerial manipulation project</a>. I am writing it down because I think it is the right next problem, and because I would like to spend a PhD on it. If you run a lab where this belongs, I would be glad to talk.</p>
-        <p class="note">Mingtian Tan · <a href="mailto:mingtian.tan20@gmail.com">mingtian.tan20@gmail.com</a>. All illustrations in Part 1 are from Wikimedia Commons under their own licences (credits under each image; full list in <a href="https://github.com/MingtianTan/Sandevistan/blob/main/assets/media/CREDITS.md"><code>assets/media/CREDITS.md</code></a>); the figures in Parts 1–2 are drawn for this page. The two clips under the title are streamed from GIPHY and belong to Warner Bros. and to Studio Trigger, CD PROJEKT RED and Netflix. Sandevistan is a name from Cyberpunk 2077 by CD Projekt Red, used here as a nickname.</p>
-      </div>
-    </section>
-    </details>
   </main>
 
   <footer>
-    <div class="wrap"><p>SPINE / Sandevistan · a reflex layer for robot foundation models · research vision, October 2026.</p></div>
+    <div class="wrap">
+      <p class="contact">A research vision, not a result: nothing on this page has been built yet. The data pipeline it relies on (disturbance models, specialists and a verified dataset) exists in my <a href="https://mingtiantan.github.io/aerial-manipulation/">aerial manipulation project</a>. I would like to spend a PhD on this problem; if you run a lab where it belongs, I would be glad to talk. Mingtian Tan · <a href="mailto:teemty@umich.edu">teemty@umich.edu</a></p>
+      <p>Part 1 illustrations are from Wikimedia Commons under their own licences (credits under each image; full list in <a href="https://github.com/MingtianTan/Sandevistan/blob/main/assets/media/CREDITS.md">CREDITS.md</a>); the figures are drawn for this page. The two clips under the title are streamed from GIPHY and belong to Warner Bros. and to Studio Trigger, CD PROJEKT RED and Netflix. Sandevistan is a name from Cyberpunk 2077 by CD Projekt Red, used here as a nickname.</p>
+      <p>SPINE / Sandevistan · a reflex layer for robot foundation models · research vision, October 2026.</p>
+    </div>
   </footer>
   <script src="main.js?v=20261021d"></script>
 </body>
