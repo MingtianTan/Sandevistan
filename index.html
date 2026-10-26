@@ -237,7 +237,7 @@
         <h2>A reflex layer between the plan and the actuators</h2>
         <p>A VLA such as π0.5 or GR00T N1 reads language and images, thinks for 100–300 ms, and emits a chunk of actions that the robot then plays back for a second or more. Everything that happens to the body inside that window, a gust, a slip, a bump, a payload shift, is handled by whatever low-level controller sits underneath, which knows nothing about the task. <b>SPINE</b> is the missing middle: a small network that runs at hundreds of hertz on proprioception and fast visual cues, sees the VLA's chunk and its intent, and decides in each millisecond whether to let the plan run, correct it, slow it down, or take over.</p>
         <figure class="figure">
-          <a href="assets/figures/three_loops.png" target="_blank" rel="noopener"><img src="assets/figures/three_loops.png" width="2360" height="880" alt="Three control loops: the VLA as cortex, SPINE as spinal cord, the controller as muscle"></a>
+          <a href="assets/figures/three_loops.png?v=2" target="_blank" rel="noopener"><img src="assets/figures/three_loops.png?v=2" width="2360" height="880" alt="Three control loops: the VLA as cortex, SPINE as spinal cord, the controller as muscle"></a>
           <figcaption><b>Figure 2.</b> Three loops, three clocks. SPINE takes the VLA's chunk and intent as input, the robot's fast senses as its own, and hands a corrected target to the controller. It talks back to the VLA with a state token, so the planner learns to expect it.</figcaption>
         </figure>
         <ul class="points">

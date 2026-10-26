@@ -51,8 +51,8 @@ svg.append(f'<text x="785" y="163" font-size="11.5" fill="{CYAN}" text-anchor="m
 svg.append(f'<text x="785" y="176" font-size="11.5" fill="{CYAN}" text-anchor="middle" {MONO}>target</text>')
 # sensors
 svg.append(f'<rect x="430" y="330" width="320" height="60" rx="8" fill="{PANEL}" stroke="{CYAN}" stroke-dasharray="4 3"/>')
-svg.append(f'<text x="590" y="356" font-size="14" fill="{INK}" text-anchor="middle" {SANS}>fast senses: IMU · joint encoders · optical flow / event camera</text>')
-svg.append(f'<text x="590" y="376" font-size="12" fill="{FAINT}" text-anchor="middle" {MONO}>the vestibular system and muscle spindles of the robot</text>')
+svg.append(f'<text x="590" y="356" font-size="14" fill="{INK}" text-anchor="middle" {SANS}>fast senses: IMU · joint encoders · event camera</text>')
+svg.append(f'<text x="590" y="376" font-size="12" fill="{FAINT}" text-anchor="middle" {MONO}>a robot\'s inner ear and muscle spindles</text>')
 svg.append(f'<line x1="590" y1="328" x2="590" y2="304" stroke="{CYAN}" stroke-width="2" marker-end="url(#a-cyan)"/>')
 svg.append(f'<rect x="40" y="330" width="320" height="60" rx="8" fill="{PANEL}" stroke="{MAG}" stroke-dasharray="4 3"/>')
 svg.append(f'<text x="200" y="356" font-size="14" fill="{INK}" text-anchor="middle" {SANS}>slow senses: cameras at 20 Hz · language</text>')
